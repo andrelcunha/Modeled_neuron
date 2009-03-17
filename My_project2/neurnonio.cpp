@@ -7,7 +7,7 @@
 using namespace std;
 
 Cneuron::Cneuron(int n, int * value ,float *weight, float limiar, int *S, float lamb){
-	
+
 	N = n + 1;				//N -> collums
 	//matrix=new int*[];
 	//for (int i=0; i < N
@@ -35,7 +35,7 @@ Cneuron::Cneuron(int n, int * value ,float *weight, float limiar, int *S, float 
 			dendrites_i[i]=0;
 			dendrites_w[i]=limiar*(-1);
 		}
-		
+
 	}
 	lambda = lamb;
 	axon = 0;
@@ -72,8 +72,6 @@ void Cneuron::teach(){
 		}
 	}
 	cout << "aprendi" << endl;
-	generate_table(4);
-	
 }
 
 void Cneuron::learn(int S){
@@ -83,9 +81,9 @@ void Cneuron::learn(int S){
 		Wn[i]=dendrites_w[i] + lambda*(S - axon)*dendrites_i[i];
 	//	cout << "W0 " << dendrites_w[i] << "; W1 " << Wn[i] << endl;
 		dendrites_w[i]=Wn[i];
-		
+
 	}
-	
+
 }
 
 int Cneuron::ativation(){
@@ -93,7 +91,7 @@ int Cneuron::ativation(){
 	temp += int(dendrites_i[0]) * (dendrites_w[0]);
 	temp += int(dendrites_i[1]) * dendrites_w[1];
 	temp += int(dendrites_i[2]) * dendrites_w[2];
-	
+
 	if (temp < 0) {
 		axon = -1;
 	}
@@ -105,13 +103,51 @@ int Cneuron::ativation(){
 }
 
 void Cneuron::generate_table(int N){
-	//int qtdd = pow(2,N);
+	int qtdd = pow(2,(N-1)); //quantidade total de combinações
 	//TODO: to create dynamic tables and use the function below
+	matrix = new int*[N];
+	for (int i=0;i<N;i++){
+        matrix[i]= new int [qtdd];
+	}
+    for (int i=0;i<N;i++){
+        int aux=0;
+        for(int j=0;j<qtdd;j++){
+                int variation=pow(2,(N-i-1));
+                if(i==0){
+                    matrix[i][j]=1;
+                }
+                else{
+                    if(((j)%(variation))==0&&j!=0){
+                        if(aux==0){
+                            aux=1;
+                        }else{
+                            aux=0;
+                        }
+                    }
+                    matrix[i][j]=aux;
+
+                }
+        }
+    }
+    for (int j=0;j<qtdd;j++){
+        //cout << i;
+        for(int i=0;i<N;i++){
+        //    cout << j << " ";
+            cout << matrix[i][j] << " " ;
+        }
+        cout << endl;
+    }
 }
 
+void Cneuron::populate_W(){
+    W = new float [N];
+    for (int i=0;i<N;i++){
+        W[i]=generate_random();
+    }
+}
 float Cneuron::generate_random(){
 	BasicLCG rng(time(NULL));
-	int x1=rng.inRange(0, 100), x2=rng.inRange(0, 100); 
+	int x1=rng.inRange(0, 100), x2=rng.inRange(0, 100);
 	int aux = (x1 - x2);
 	float out = (float)aux / 100;
 	return out;

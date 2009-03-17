@@ -4,10 +4,10 @@
 
 
 using namespace std;
-
-int main(int argc, char * argv)
+int main(int argc, char * argv[])
+//int main(int argc, char * argv)
 {
-	 
+
     //populating neuron
     int value[8]=
 	{0 , 0 , 0 , 1 , 1 , 0 , 1 , 1 };
@@ -15,7 +15,7 @@ int main(int argc, char * argv)
 	float limiar = -0.5;
 	int S[]={0,0,0,1};
 	float lambda = 0.3;
-	
+
 	Cneuron My_neuron ( N , value, weight, limiar, S , lambda );
     for (int i=0;i<N;i++){
 		//cout << array[i][0] <<" , "<< array[i][1] << endl;

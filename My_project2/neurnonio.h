@@ -11,7 +11,7 @@ class Cneuron
         //Cneuron(){};
         Cneuron(int n, int *valor,float peso[], float, int S[], float ); //set number of dentrites
 	~Cneuron(){};
-        void set_input(int,int,int); 
+        void set_input(int,int,int);
 		int get_output();
 		void teach();
 
@@ -23,12 +23,16 @@ class Cneuron
 		int dendrites_i[3]; //array of values of each dentrite
 		float dendrites_w[3]; //array of weight of each dentrite
 		int S_[4];
+		int **matrix;
+		float *W;
 		float lambda;
-		int ativation();
+		int activation();
 		void learn(int );
         int axon;
 		void generate_table(int);
 		float generate_random();
+		void populate_W();
+
 
     };
 
