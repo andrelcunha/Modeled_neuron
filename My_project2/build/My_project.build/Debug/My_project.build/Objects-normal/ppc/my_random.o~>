@@ -1,0 +1,40 @@
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:43: warning: this decimal constant is unsigned only in ISO C90
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:61: warning: this decimal constant is unsigned only in ISO C90
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:76: warning: this decimal constant is unsigned only in ISO C90
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:86: warning: this decimal constant is unsigned only in ISO C90
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:12: error: 'BasicLCG' has not been declared
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:12: error: ISO C++ forbids declaration of 'BasicLCG' with no type
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'int BasicLCG()':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:14: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:17: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:17: error: ISO C++ forbids declaration of 'BasicLCG' with no type
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'int BasicLCG(long unsigned int)':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:19: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:22: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'void seed(long unsigned int)':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:24: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:31: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'long unsigned int nextNumber()':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:43: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:51: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'short unsigned int nextInt()':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:61: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:69: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'unsigned char nextChar()':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:76: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:84: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'int nextBit()':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:86: error: 'iCurrent' was not declared in this scope
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: At global scope:
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:90: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:95: error: 'BasicLCG' is not a class or namespace
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'int BasicLCG()':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:15: warning: control reaches end of non-void function
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp: In function 'int BasicLCG(long unsigned int)':
+/Users/deko/Documents/sandbox/cpp/My_project2/my_random.cpp:20: warning: control reaches end of non-void function
