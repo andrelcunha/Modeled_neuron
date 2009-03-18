@@ -11,19 +11,17 @@ class Cneuron
         //Cneuron(){};
         Cneuron(int n, int S[], float lambda); //set number of dentrites
         ~Cneuron();
-        void set_input(int,int,int);
+	void set_debug(bool deb){Debugging=deb;};
+		bool get_debug(){return Debugging;};
 		int get_output();
 		void teach();
 
     private:
         // TODO (luiscunha#1#): Fazer um update_neuron - atualiza valor de entrada
+		bool Debugging;
 		int N, rows ; //number of dentrites
-		float L;
-		int values[4][3];
-		int dendrites_i[3]; //array of values of each dentrite
-		float dendrites_w[3]; //array of weight of each dentrite
-		int S_[4];
-		int *S0, *S1, **matrix;
+		int *dendrites_i; //array of values of each dentrite
+		int *S0, **matrix;
 		float *W, lambda;
 		int activation();
 		void learn(int );
@@ -31,6 +29,7 @@ class Cneuron
 		void generate_table();
 		float generate_random();
 		void populate_W();
+		
 
 
     };

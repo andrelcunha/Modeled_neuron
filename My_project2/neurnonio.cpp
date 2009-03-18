@@ -8,65 +8,69 @@ using namespace std;
 //****************************************************************************************************
 Cneuron::Cneuron(int n, int *S, float lamb){
 
-	N = n + 1;				//N -> collums
-	rows=pow(2,(N-1)); //quantidade total de combinações
+	N = n + 1;							//N -> collums
+	rows=pow(2,(N-1));					//quantidade total de combinações
 	generate_table();
 	populate_W();
-	//matrix=new int*[];
-	//for (int i=0; i < N
+	dendrites_i = new int[rows];
     S0 = new int[rows];
-	for (int i=0;i<rows ;i++){
+	for (int i=0;i<rows;i++){
 		if (S[i]==0)
 			S0[i]=-1;
 		else
 			S0[i]=S[i];
 	}
-
 	lambda = lamb;
 	axon = 0;
-}
-
-//****************************************************************************************************
-void Cneuron::set_input(int dend_num,int value,int weight){
-	if ( dend_num != 0){
-		dendrites_i[dend_num]= value;
-		dendrites_w[dend_num]= weight;
-	}
+	
 }
 //****************************************************************************************************
+Cneuron::~Cneuron(){
+	delete  [ ]S0;
+	S0 = NULL;
+	delete  [ ]matrix;
+	matrix = NULL;
+	delete  [ ]W;
+	W = NULL;
+	delete [ ]dendrites_i;
+	dendrites_i = NULL;
+}
 int Cneuron::get_output(){
 	return axon;
 }
 //****************************************************************************************************
 void Cneuron::teach(){
-    bool with_error=1;
+    bool with_error=0;
 	int counter=0;
-	while (with_error){
+	do{
 		for (int i=0;i<N;i++){
 			with_error=0;
-			for (int j=0; j<
-			dendrites_i[0]= values[i][0];
-			dendrites_i[1]= values[i][1];
-			dendrites_i[2]= values[i][2];
-			if (activation()!=S_[i]){
-				learn(S_[i]);
-				cout << "learn" <<endl;
-				with_error=1;
+			for (int j=0; j<rows;j++){  
+				dendrites_i[j]= matrix[i][j];				
 			}
+			if (activation()!=S0[i]){
+					learn(S0[i]);
+					cout << "learn" <<endl;
+					with_error=1;
+				}
 			counter ++;
 			cout << "iteration " << counter <<endl;
-		}
-	}
+			if(counter==100)
+				return;
+			}
+	}while (with_error);
 	cout << "aprendi" << endl;
 }
 //****************************************************************************************************
 void Cneuron::learn(int S){
 	float *Wn = new float[N];
 	for (int i=0;i<N;i++){
-	//	cout << "W1 = W0(" << dendrites_w[i] << ") + lambda("<< lambda <<") * ["<< S << " - " << axon <<"] * x"<< i <<" " << dendrites_i[i] <<endl;
-		Wn[i]=dendrites_w[i] + lambda*(S - axon)*dendrites_i[i];
-	//	cout << "W0 " << dendrites_w[i] << "; W1 " << Wn[i] << endl;
-		dendrites_w[i]=Wn[i];
+		if (Debugging)
+			cout << "W1 = W0(" << W[i] << ") + lambda("<< lambda <<") * ["<< S << " - " << axon <<"] * x"<< i <<" " << dendrites_i[i] <<endl;
+		Wn[i]=W[i] + lambda*(S - axon)*dendrites_i[i];
+		//if (Debugging)
+		//	cout << "W0 " << W[i] << "; W1 " << Wn[i] << endl;
+		W[i]=Wn[i];
 
 	}
 
@@ -75,7 +79,9 @@ void Cneuron::learn(int S){
 int Cneuron::activation(){                      //Verificar se está funcionando
 	float temp=0;
 	for (int i=0;i<N;i++){
-        temp += (dendrites_i[N]) * int(dendrites_w[N]);
+        temp += (dendrites_i[N]) * int(W[N]);
+		if(Debugging)
+			cout << temp<<"+="<<dendrites_i[i]<<" * "<<W[N] << endl;
 	}
 	if (temp < 0) {
 		axon = -1;
@@ -94,7 +100,7 @@ void Cneuron::generate_table(){            //working fine -- verificar rows x qt
 	}
     for (int i=0;i<N;i++){
         int aux=0;
-        for(int j=0;j<;j++){
+        for(int j=0;j<rows;j++){
                 int variation=pow(2,(N-i-1));
                 if(i==0){
                     matrix[i][j]=1;
@@ -112,15 +118,17 @@ void Cneuron::generate_table(){            //working fine -- verificar rows x qt
                 }
         }
     }
-    /* Debugging
-    for (int j=0;j<qtdd;j++){
-        //cout << i;
-        for(int i=0;i<N;i++){
-        //    cout << j << " ";
-            cout << matrix[i][j] << " " ;
-        }
-        cout << endl;
-    }*/
+    /* Debugging*/
+	if(Debugging){
+		for (int j=0;j<rows;j++){
+			//cout << i;
+			for(int i=0;i<N;i++){
+				//    cout << j << " ";
+				cout << matrix[i][j] << " " ;
+			}
+			cout << endl;
+		}/**/
+	}
 }
 //****************************************************************************************************
 void Cneuron::populate_W(){                     //working fine
