@@ -3,7 +3,7 @@
  *  My_project
  *
  *  Modificated by Andre Luis da Cunha on 17/03/09.
- *  
+ *
  *
  */
 
@@ -24,12 +24,13 @@
 // WARNING: Not for Cryprographic use
 //   Not for statistical methods.
 class BasicLCG {
-    
+
 private:
 	unsigned long iCurrent;
 public:
 	BasicLCG();
 	BasicLCG(unsigned long);
+	~BasicLCG(){};
 	void seed(unsigned long iSeed);
 	unsigned long nextNumber(); //get the next random number
 	unsigned short int nextInt();
@@ -69,7 +70,7 @@ void main()
     for( i=1; i<41; i++) {
         cout << rng.inRange(10, 5) <<"\t";
     }
-	
+
     return;
 }
 */

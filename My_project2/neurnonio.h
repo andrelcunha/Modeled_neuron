@@ -11,9 +11,9 @@ class Cneuron
         //Cneuron(){};
         Cneuron(int n, int S[], float lambda); //set number of dentrites
         ~Cneuron();
-	void set_debug(bool deb){Debugging=deb;};
+        void set_debug(bool deb){Debugging=deb;};
 		bool get_debug(){return Debugging;};
-		int get_output();
+		int get_output(){return axon;};
 		void teach();
 
     private:
@@ -29,7 +29,9 @@ class Cneuron
 		void generate_table();
 		float generate_random();
 		void populate_W();
-		
+		void debug();
+
+
 
 
     };
