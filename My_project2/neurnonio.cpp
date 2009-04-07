@@ -5,11 +5,11 @@
 #include "my_random.h"
 
 using namespace std;
-//**************************************************************************************************
+//******************************************************************************
 Cneuron::Cneuron(int n, int *S, float lamb){
     Debugging=false;
-	N = n + 1;							//N -> collums
-	rows=pow(2,(N-1));					//quantidade total de combinações
+	N = n + 1;					//N -> collums
+	rows=pow(2,(N-1));				//total de combinações
 	generate_table();
 	populate_W();
 	dendrites_i = new int[rows];
@@ -26,7 +26,7 @@ Cneuron::Cneuron(int n, int *S, float lamb){
 	axon = 0;
 
 }
-//**************************************************************************************************
+//******************************************************************************
 Cneuron::~Cneuron(){
 	delete  [ ]S0;
 	S0 = NULL;
@@ -38,7 +38,7 @@ Cneuron::~Cneuron(){
 	dendrites_i = NULL;
 }
 
-//**************************************************************************************************
+//******************************************************************************
 void Cneuron::teach(){
     bool with_error=0;
 	int counter=1;
@@ -59,7 +59,7 @@ void Cneuron::teach(){
 	}while (with_error);
 	cout << "Aprendi!" << endl;
 }
-//**************************************************************************************************
+//******************************************************************************
 void Cneuron::learn(int S){
 	float *Wn = new float[N];
 	for (int i=0;i<N;i++){
@@ -71,7 +71,7 @@ void Cneuron::learn(int S){
 	}
 
 }
-//**************************************************************************************************
+//******************************************************************************
 int Cneuron::activation(){                      //Verificar se está funcionando
 	float temp=0;
 	for (int i=0;i<N;i++){
@@ -89,7 +89,7 @@ int Cneuron::activation(){                      //Verificar se está funcionando
         cout << "axon " << axon   <<endl;
 	return axon;
 }
-//**************************************************************************************************
+//******************************************************************************
 void Cneuron::generate_table(){            //working fine -- verificar
 	matrix = new int*[N];
 	for (int i=0;i<N;i++){
@@ -115,7 +115,7 @@ void Cneuron::generate_table(){            //working fine -- verificar
         }
     }
 }
-//**************************************************************************************************
+//******************************************************************************
 void Cneuron::populate_W(){                     //working fine
     W = new float [N];
     cout<< "Randomizing ...";
@@ -127,7 +127,7 @@ void Cneuron::populate_W(){                     //working fine
     cout <<endl;
 
 }
-//**************************************************************************************************
+//******************************************************************************
 float Cneuron::generate_random(){               //working fine
 	BasicLCG rng(time(0));
 	int x1=rng.inRange(0, 100), x2=rng.inRange(0, 100);
@@ -137,7 +137,7 @@ float Cneuron::generate_random(){               //working fine
 	rng.~BasicLCG();
 	return out;
 }
-//**************************************************************************************************
+//******************************************************************************
 void Cneuron::debug(){
     for (int i=0; i<N;i++)
         cout<<"X"<<i<<"______";                           //header
